@@ -19,7 +19,6 @@ const themeCheck = () => {
   if (userTheme === "dark" || (!userTheme && systemTheme)) {
     document.documentElement.classList.add("dark");
     moonIcon.classList.add("display-none");
-    alert("hola");
     return;
   }
   sunIcon.classList.add("display-none");
