@@ -30,7 +30,6 @@ const themeSwitch = () => {
     document.documentElement.classList.remove("dark");
     localStorage.setItem("theme", "light");
     iconToggle();
-    alert("hola");
     return;
   }
   document.documentElement.classList.add("dark");
@@ -40,11 +39,9 @@ const themeSwitch = () => {
 
 sunIcon.addEventListener("click", () => {
   themeSwitch();
-  alert("hola");
 });
 moonIcon.addEventListener("click", () => {
   themeSwitch();
-  alert("hola");
 });
 themeCheck();
 
@@ -52,7 +49,6 @@ themeCheck();
 //cambiar a version movil
 btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
-  alert("hola");
 });
 
 
