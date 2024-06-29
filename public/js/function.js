@@ -3,6 +3,8 @@ import { arrayPortafol } from "./portafolio_object.js";
 const btn = document.querySelector("button.mobile-menu-button");
 const menu = document.querySelector(".mobile-menu");
 
+document.getElementById('get-current-year').innerHTML = moment().format('YYYY'); + " ";
+
 //modo nocturno prueba
 const moonIcon = document.querySelector(".moon");
 const sunIcon = document.querySelector(".sun");
@@ -43,51 +45,10 @@ moonIcon.addEventListener("click", () => {
   themeSwitch();
 });
 themeCheck();
-
-
 //cambiar a version movil
 btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
-
-
-const moonIcon2 = document.querySelector(".moon2");
-const sunIcon2 = document.querySelector(".sun2");
-
-
-const iconToggle2 = () => {
-  moonIcon2.classList.toggle("display-none");
-  sunIcon2.classList.toggle("display-none");
-};
-
-const themeCheck2 = () => {
-  if (userTheme === "dark" || (!userTheme && systemTheme)) {
-    document.documentElement.classList.add("dark");
-    moonIcon2.classList.add("display-none");
-    return;
-  }
-  sunIcon2.classList.add("display-none");
-};
-
-const themeSwitch2 = () => {
-  if (document.documentElement.classList.contains("dark")) {
-    document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", "light");
-    iconToggle2();
-    return;
-  }
-  document.documentElement.classList.add("dark");
-  localStorage.setItem("theme", "dark");
-  iconToggle2();
-};
-
-sunIcon2.addEventListener("click", () => {
-  themeSwitch2();
-});
-moonIcon2.addEventListener("click", () => {
-  themeSwitch2();
-});
-themeCheck2();
 
 //cambiar banner cada que se cargue la pagina
 function chageBanner() {
@@ -113,11 +74,10 @@ accordionHeader.forEach((header) => {
       header.parentElement.querySelector(".accordion-content");
     let accordionMaxHeight = accordionContent.style.maxHeight;
 
-    // condicion tamaño
+    // Condition handling
     if (accordionMaxHeight == "0px" || accordionMaxHeight.length == 0) {
-      accordionContent.style.maxHeight = `${
-        accordionContent.scrollHeight + 32
-      }px`;
+      accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32
+        }px`;
       header.querySelector(".fas").classList.remove("fa-plus");
       header.querySelector(".fas").classList.add("fa-minus");
       header.parentElement.classList.add("bg-indigo-50");
@@ -154,7 +114,7 @@ arrayPortafol.forEach((target) => {
             class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l  border-blue-500 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
             <a id="mostProyect" class="mostProyect focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:bg-indigo-500 ml-0 md:ml-5 bg-blue-500 dark:bg-indigo-600 
             ease-in-out hover:bg-indigo-600 rounded text-white px-3 md:px-6 py-2 text-sm hover:shadow-lg transition duration-500 transform-gpu hover:scale-110"
-              Target="_blank" href="${target.view}" onclick="buttonPortafolio()">¡Mirar!</a>
+              Target="_blank" href="${target.view}">¡Mirar!</a>
             <div id="${target.uuid}" class="${target.uuid} bg-white dark:bg-gray-900 border-l-4  border-blue-500 mt-4 p-3 text-gray-900 dark:text-white">
               <h6 class="mb-2 font-semibold leading-5">
                 Descripción
@@ -183,4 +143,5 @@ arrayPortafol.forEach((target) => {
   </div>
 </div>`;
   document.getElementById("targetPortafolio").innerHTML = mostTarget;
+
 });
